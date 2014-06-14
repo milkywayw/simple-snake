@@ -31,17 +31,26 @@ public class Snake
 		addHead(initialPoint);
 	}
     
+	public Direction getDir()
+	{
+		return currDir;
+	}
     
+	public void setDir(Direction dir)
+	{
+		currDir = dir;
+	}
+	
     public void move(Direction dir)
     {
     	removeTail();
         grow(dir);
     }
     
-    public void grow(Direction dir)
+    public void grow()
     {
     	Point head = snake.getFirst();
-        Point delta = dir.getDelta();
+        Point delta = currDir.getDelta();
         
         Point newHead = new Point(head.getX() + delta.getX(), head.getY() + delta.getY());
         
