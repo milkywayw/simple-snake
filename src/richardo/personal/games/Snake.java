@@ -41,10 +41,10 @@ public class Snake
 		currDir = dir;
 	}
 	
-    public void move(Direction dir)
+    public void move()
     {
     	removeTail();
-        grow(dir);
+        grow();
     }
     
     public void grow()
