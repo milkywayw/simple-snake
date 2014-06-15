@@ -11,7 +11,8 @@ public class Snake
     private HashSet<Point> points;
     private Direction currDir;
 
-    private enum Direction
+    // package private
+    static enum Direction
     {
         UP(new Point(0, 1)), RIGHT(new Point(1, 0)), DOWN(new Point(0, -1)), LEFT(new Point(-1, 0));
 
@@ -26,7 +27,7 @@ public class Snake
         {
             return delta;
         }
-    };
+    }
 
     public Snake(Point initialPoint, Direction dir)
     {
@@ -37,12 +38,12 @@ public class Snake
         addHead(initialPoint);
     }
 
-    public Direction getDir()
+    public Direction getDirection()
     {
         return currDir;
     }
 
-    public void setDir(Direction dir)
+    public void setDirection(Direction dir)
     {
         currDir = dir;
     }
@@ -65,21 +66,25 @@ public class Snake
 
     public void grow()
     {
+        Point target = nextPoint();
+        addHead(target);
+    }
+    
+    public Point nextPoint()
+    {
         Point head = snake.getFirst();
         Point delta = currDir.getDelta();
 
-        Point newHead = new Point(head.getX() + delta.getX(), head.getY() + delta.getY());
-
-        addHead(newHead);
+        return new Point(head.getX() + delta.getX(), head.getY() + delta.getY());
     }
 
-    public void addHead(Point p)
+    private void addHead(Point p)
     {
         snake.addFirst(p);
         points.add(p);
     }
 
-    public void removeTail()
+    private void removeTail()
     {
         points.remove(snake.removeLast());
     }

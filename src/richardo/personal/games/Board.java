@@ -20,7 +20,7 @@ public class Board
         this.height = height;
     }
 
-    private boolean withinBounds(Point p)
+    public boolean withinBounds(Point p)
     {
         int x = p.getX();
         int y = p.getY();
@@ -34,12 +34,12 @@ public class Board
         return true;
     }
     
-    private int getWidth()
+    public int getWidth()
     {
         return width;
     }
     
-    private int getHeight()
+    public int getHeight()
     {
         return height;
     }
