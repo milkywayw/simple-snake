@@ -33,4 +33,14 @@ public class Board
 
         return true;
     }
+    
+    private int getWidth()
+    {
+        return width;
+    }
+    
+    private int getHeight()
+    {
+        return height;
+    }
 }

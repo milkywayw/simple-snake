@@ -15,4 +15,9 @@ public class Food
     {
         return location;
     }
+    
+    public void setLocation(Point point)
+    {
+        location = point;
+    }
 }

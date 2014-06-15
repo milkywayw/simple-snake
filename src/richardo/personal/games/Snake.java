@@ -47,6 +47,16 @@ public class Snake
         currDir = dir;
     }
 
+    public boolean containsPoint(Point point)
+    {
+        return points.contains(point);
+    }
+    
+    public Point getHead()
+    {
+        return snake.getFirst();
+    }
+    
     public void move()
     {
         removeTail();
