@@ -1,10 +1,19 @@
 package richardo.personal.games.view;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+
 import javax.swing.JPanel;
 
-import richardo.personal.games.Board;
-
 public class SnakeBoard extends JPanel
-{
-    
+{   
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+        setBackground(Color.black);
+        
+        
+    }
 }

@@ -2,58 +2,63 @@ package richardo.personal.games.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class SnakeRender
+import richardo.personal.games.Board;
+import richardo.personal.games.Food;
+import richardo.personal.games.Snake;
+
+public class SnakeRender extends JFrame
 {
-    private JFrame frame;
-    private JPanel board;
+    private SnakeBoard canvas;
     private JLabel title;
     
-    private static final boolean DOUBLE_BUFFERED = true;
     private static final long serialVersionUID = 1L;
-
+    
     public SnakeRender()
     {
-        initFrame();
         initPanel();
         initLabel();
         
-        frame.add(board, BorderLayout.CENTER);
-        frame.add(title, BorderLayout.NORTH);
+        Container pane = getContentPane();
+        pane.setLayout(new BorderLayout());
+        pane.add(canvas, BorderLayout.CENTER);
+        pane.add(title, BorderLayout.PAGE_END); 
+
+        initFrame();
     }
     
     private void initFrame()
     {
-        frame = new JFrame();
-        
-        frame.setTitle("Snake");
-        frame.setSize(700, 700);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        frame.setLayout(new BorderLayout());
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        pack();
+        setTitle("Snake");
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
     
     private void initPanel()
     {
-        board = new JPanel(DOUBLE_BUFFERED);
-        
-        board.setBackground(Color.red);
-        board.setPreferredSize(new Dimension(400,400));
+        canvas = new SnakeBoard();
     }
     
     private void initLabel()
     {
         title = new JLabel("Snake!");
-
-        title.setBackground(Color.black);
-        title.setForeground(Color.white);
+        
+        title.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 15));
+        title.setBorder(BorderFactory.createEmptyBorder(2, 5, 4, 5));
+        
+        title.setOpaque(true);
+        title.setBackground(Color.cyan);
     }
     
     public static void main(String[] args)
@@ -64,8 +69,30 @@ public class SnakeRender
             public void run()
             {
                 SnakeRender snakeGame = new SnakeRender();
-                snakeGame.frame.setVisible(true);
+                snakeGame.setVisible(true);
             }
         });
+    }
+    
+    public void update(Snake snake, Food food, Board board)
+    {
+        drawBoard(board);
+        drawSnake(snake);
+        drawFood(food);
+    }
+    
+    private void drawBoard(Board board)
+    {
+        canvas.repaint();
+    }
+    
+    private void drawSnake(Snake snake)
+    {
+    
+    }
+    
+    private void drawFood(Food food)
+    {
+    
     }
 }
