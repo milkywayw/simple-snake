@@ -1,9 +1,10 @@
-package richardo.personal.games;
+package milkywayw.games.snake.model;
 
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import richardo.personal.games.utilities.Point;
+import milkywayw.utilities.Point;
+
 
 public class Snake
 {

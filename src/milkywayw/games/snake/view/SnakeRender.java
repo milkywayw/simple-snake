@@ -1,4 +1,4 @@
-package richardo.personal.games.view;
+package milkywayw.games.snake.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,9 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
-import richardo.personal.games.Board;
-import richardo.personal.games.Food;
-import richardo.personal.games.Snake;
+import milkywayw.games.snake.model.Board;
+import milkywayw.games.snake.model.Food;
+import milkywayw.games.snake.model.Snake;
+
 
 public class SnakeRender extends JFrame
 {

@@ -1,9 +1,13 @@
-package richardo.personal.games;
+package milkywayw.games.snake.controller;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import richardo.personal.games.utilities.Point;
+import milkywayw.games.snake.model.Board;
+import milkywayw.games.snake.model.Food;
+import milkywayw.games.snake.model.Snake;
+import milkywayw.utilities.Point;
+
 
 public class SnakeLogic
 {

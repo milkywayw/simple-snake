@@ -1,4 +1,4 @@
-package richardo.personal.games.utilities;
+package milkywayw.utilities;
 
 public class Point
 {

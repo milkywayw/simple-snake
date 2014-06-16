@@ -1,4 +1,4 @@
-package richardo.personal.games.view;
+package milkywayw.games.snake.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
