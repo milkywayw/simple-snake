@@ -45,11 +45,11 @@ public class SnakeLogic
     
     private static void generateNextFood(Snake snake, Food food, Board board)
     {   
-        ArrayList<Point> pool = new ArrayList<>(board.getHeight() * board.getWidth());
+        ArrayList<Point> pool = new ArrayList<>(board.getNumCols() * board.getNumRows());
         
-        for(int i = 0; i < board.getWidth(); ++i)
+        for(int i = 0; i < board.getNumCols(); ++i)
         {
-            for(int j = 0; j < board.getHeight(); ++j)
+            for(int j = 0; j < board.getNumRows(); ++j)
             {
                 Point p = new Point(i, j);
                 

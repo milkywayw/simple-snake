@@ -7,17 +7,17 @@ public class Board
     private static final int DEFAULT_WIDTH = 40;
     private static final int DEFAULT_HEIGHT = 30;
 
-    private int width, height;
+    private int cols, rows;
 
     public Board()
     {
         this(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     }
 
-    public Board(int width, int height)
+    public Board(int cols, int rows)
     {
-        this.width = width;
-        this.height = height;
+        this.cols = cols;
+        this.rows = rows;
     }
 
     public boolean withinBounds(Point p)
@@ -28,19 +28,19 @@ public class Board
         if (x < 0 || y < 0)
             return false;
 
-        if (x >= width || y >= height)
+        if (x >= cols || y >= rows)
             return false;
 
         return true;
     }
     
-    public int getWidth()
+    public int getNumCols()
     {
-        return width;
+        return cols;
     }
     
-    public int getHeight()
+    public int getNumRows()
     {
-        return height;
+        return rows;
     }
 }
