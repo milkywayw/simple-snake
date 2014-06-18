@@ -2,11 +2,12 @@ package milkywayw.games.snake.model;
 
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Observable;
 
 import milkywayw.utilities.Point;
 
 
-public class Snake
+public class Snake extends Observable
 {
     private LinkedList<Point> snake;
     private HashSet<Point> points;
@@ -69,6 +70,8 @@ public class Snake
     {
         Point target = nextPoint();
         addHead(target);
+        
+        notifyObservers(points.clone());
     }
     
     public Point nextPoint()

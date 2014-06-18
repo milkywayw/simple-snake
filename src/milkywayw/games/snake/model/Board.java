@@ -1,8 +1,10 @@
 package milkywayw.games.snake.model;
 
+import java.util.Observable;
+
 import milkywayw.utilities.Point;
 
-public class Board
+public class Board extends Observable
 {
     private static final int DEFAULT_WIDTH = 40;
     private static final int DEFAULT_HEIGHT = 30;

@@ -1,65 +1,46 @@
 package milkywayw.games.snake.view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.util.Collection;
 
-import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
-import milkywayw.games.snake.model.Board;
-import milkywayw.games.snake.model.Food;
-import milkywayw.games.snake.model.Snake;
+import milkywayw.utilities.Point;
 
-
+@SuppressWarnings("serial")
 public class SnakeRender extends JFrame
 {
-    private SnakeBoard canvas;
-    private JLabel title;
+    private DrawBoard canvas;
+ 
+    static final int CELL_SIZE = 20;
     
-    private static final long serialVersionUID = 1L;
-    
-    public SnakeRender()
-    {
-        initPanel();
-        initLabel();
-        
-        Container pane = getContentPane();
-        pane.setLayout(new BorderLayout());
-        pane.add(canvas, BorderLayout.CENTER);
-        pane.add(title, BorderLayout.PAGE_END); 
-
+    public SnakeRender(int width, int height)
+    {   
         initFrame();
+        
+        canvas = new DrawBoard(width, height); 
+        add(canvas);
+        
+        pack();
     }
     
     private void initFrame()
     {
+        getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        pack();
         setTitle("Snake");
         setLocationRelativeTo(null);
         setVisible(true);
     }
     
-    private void initPanel()
+    public void update(Collection<Point> snake, int width, int height, Point food)
     {
-        canvas = new SnakeBoard();
-    }
-    
-    private void initLabel()
-    {
-        title = new JLabel("Snake!");
+        canvas.drawBoard();
+        canvas.drawSnake(snake);
+        canvas.drawFood(food);
         
-        title.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 15));
-        title.setBorder(BorderFactory.createEmptyBorder(2, 5, 4, 5));
-        
-        title.setOpaque(true);
-        title.setBackground(Color.cyan);
+        repaint();
     }
     
     public static void main(String[] args)
@@ -69,31 +50,9 @@ public class SnakeRender extends JFrame
             @Override
             public void run()
             {
-                SnakeRender snakeGame = new SnakeRender();
+                SnakeRender snakeGame = new SnakeRender(5, 6);
                 snakeGame.setVisible(true);
             }
         });
-    }
-    
-    public void update(Snake snake, Food food, Board board)
-    {
-        drawBoard(board);
-        drawSnake(snake);
-        drawFood(food);
-    }
-    
-    private void drawBoard(Board board)
-    {
-        canvas.repaint();
-    }
-    
-    private void drawSnake(Snake snake)
-    {
-    
-    }
-    
-    private void drawFood(Food food)
-    {
-    
     }
 }
