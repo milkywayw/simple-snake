@@ -26,8 +26,7 @@ public class SnakeRender extends JFrame
         canvas = new DrawBoard(width, height); 
         add(canvas);
         
-        pack();
-        setLocationRelativeTo(null); //center on screen
+        finalizeFrame();
     }
     
     private void initFrame()
@@ -35,6 +34,12 @@ public class SnakeRender extends JFrame
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Snake");
+    }
+    
+    private void finalizeFrame()
+    {
+        pack();
+        setLocationRelativeTo(null); //center on screen
         setVisible(true);
     }
     
