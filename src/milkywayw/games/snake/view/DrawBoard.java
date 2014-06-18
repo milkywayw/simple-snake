@@ -40,21 +40,21 @@ public class DrawBoard extends JPanel
             }
     }
 
-    void drawBoard()
+    void colorBoard(Color color)
     {
         for (int i = 0; i < rows; ++i)
             for (int j = 0; j < cols; ++j)
-                grid[i][j].setColor(Color.gray);
+                grid[i][j].setColor(color);
     }
 
-    void drawSnake(Collection<Point> snake)
+    void colorPoints(Collection<Point> points, Color color)
     {
-        for (Point p : snake)
-            grid[p.getX()][p.getY()].setColor(Color.green);
+        for (Point p : points)
+            grid[p.getX()][p.getY()].setColor(color);
     }
 
-    void drawFood(Point point)
+    void colorPoint(Point point, Color color)
     {
-        grid[point.getX()][point.getY()].setColor(Color.cyan);
+        grid[point.getX()][point.getY()].setColor(color);
     }
 }
