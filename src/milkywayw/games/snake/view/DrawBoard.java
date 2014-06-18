@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Collection;
 
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import milkywayw.utilities.Point;
@@ -35,7 +34,6 @@ public class DrawBoard extends JPanel
             for (int j = 0; j < cols; ++j)
             {
                 grid[i][j] = new ColorCell();
-                grid[i][j].setBorder(BorderFactory.createLineBorder(Color.BLUE));
                 add(grid[i][j]);
             }
     }
@@ -50,7 +48,7 @@ public class DrawBoard extends JPanel
     void colorPoints(Collection<Point> points, Color color)
     {
         for (Point p : points)
-            grid[p.getX()][p.getY()].setColor(color);
+            colorPoint(p, color);
     }
 
     void colorPoint(Point point, Color color)
