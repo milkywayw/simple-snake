@@ -15,18 +15,18 @@ public class DrawBoard extends JPanel
     private ColorCell[][] grid;
     private int cols, rows;
 
-    public DrawBoard(int cols, int rows)
+    public DrawBoard(int rows, int cols)
     {
-        this.cols = cols;
         this.rows = rows;
+        this.cols = cols;
 
         setPreferredSize(new Dimension(cols * SnakeRender.CELL_SIZE, rows * SnakeRender.CELL_SIZE));
         setLayout(new GridLayout(rows, cols));
 
-        initGrid(cols, rows);
+        initGrid(rows, cols);
     }
 
-    private void initGrid(int cols, int rows)
+    private void initGrid(int rows, int cols)
     {
         grid = new ColorCell[rows][cols];
 

@@ -13,8 +13,7 @@ public class Snake extends Observable
     private HashSet<Point> points;
     private Direction currDir;
 
-    // package private
-    static enum Direction
+    public static enum Direction
     {
         UP(new Point(0, 1)), RIGHT(new Point(1, 0)), DOWN(new Point(0, -1)), LEFT(new Point(-1, 0));
 
@@ -91,5 +90,10 @@ public class Snake extends Observable
     private void removeTail()
     {
         points.remove(snake.removeLast());
+    }
+    
+    public HashSet<Point> getPoints()
+    {
+        return new HashSet<Point>(points);
     }
 }

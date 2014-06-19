@@ -6,6 +6,7 @@ import java.util.Random;
 import milkywayw.games.snake.model.Board;
 import milkywayw.games.snake.model.Food;
 import milkywayw.games.snake.model.Snake;
+import milkywayw.games.snake.model.Snake.Direction;
 import milkywayw.utilities.Point;
 
 
@@ -26,7 +27,7 @@ public class SnakeLogic
         if(food.getLocation().equals(target))
         {
             snake.grow();
-            generateNextFood(snake, food, board);
+            generateFood(board, snake);
         }
         else
         {
@@ -36,18 +37,35 @@ public class SnakeLogic
         return true;
     }
     
-    /*
-    private static void _generateNextFood(Snake snake, Food food, Board board)
+    // board starts empty
+    public static Snake generateSnake(Board board)
     {
-        do
+        Point p;
+        Direction dir;
+        
+        int x = rng.nextInt(board.getNumCols());
+        int y = rng.nextInt(board.getNumRows());
+        p = new Point(x,y);
+        
+        // point to furthest wall
         {
-            food.setLocation(new Point(rng.nextInt(board.getWidth()), rng.nextInt(board.getHeight())));
-        }
-        while(snake.containsPoint(food.getLocation()));
+            int closestXWall = Math.min(board.getNumCols() - x, x);
+            int closestYWall = Math.min(board.getNumRows() - y, y);    
+        
+            if(closestXWall < closestYWall)
+            {
+                dir = (board.getNumCols() - x > x) ? Direction.RIGHT : Direction.LEFT;
+            }
+            else
+            {
+                dir = (board.getNumRows() - y > y) ? Direction.DOWN : Direction.UP;
+            }
+        }        
+       
+        return new Snake(p, dir);
     }
-    */
     
-    private static void generateNextFood(Snake snake, Food food, Board board)
+    public static Food generateFood(Board board, Snake snake)
     {   
         ArrayList<Point> pool = new ArrayList<>(board.getNumCols() * board.getNumRows());
         
@@ -64,6 +82,6 @@ public class SnakeLogic
             }
         }
         
-        food.setLocation(pool.get(rng.nextInt(pool.size())));   
+        return new Food(pool.get(rng.nextInt(pool.size())));   
     }
 }

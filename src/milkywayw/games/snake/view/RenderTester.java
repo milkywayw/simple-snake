@@ -25,10 +25,4 @@ public class RenderTester
     {
         return new Point(27, 37);
     }
-
-    public static void main(String[] args)
-    {
-        SnakeRender snakeGame = new SnakeRender(40, 30);
-        snakeGame.update(generateSnake(), generateFood());
-    }
 }

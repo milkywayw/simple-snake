@@ -19,11 +19,11 @@ public class SnakeRender extends JFrame
     private static final Color SNAKE_COLOR = Color.green;
     private static final Color FOOD_COLOR = Color.cyan;
     
-    public SnakeRender(int width, int height)
+    public SnakeRender(int rows, int cols)
     {   
         initFrame();
         
-        canvas = new DrawBoard(width, height); 
+        canvas = new DrawBoard(rows, cols); 
         add(canvas);
         
         finalizeFrame();

@@ -11,7 +11,7 @@ public class ColorCell extends JLabel
     public ColorCell()
     {
         setBackground(Color.gray);
-        setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        setBorder(BorderFactory.createLineBorder(Color.black));
         setOpaque(true);
     }
     

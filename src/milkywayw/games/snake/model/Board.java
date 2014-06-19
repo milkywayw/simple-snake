@@ -6,20 +6,20 @@ import milkywayw.utilities.Point;
 
 public class Board extends Observable
 {
-    private static final int DEFAULT_WIDTH = 40;
-    private static final int DEFAULT_HEIGHT = 30;
+    private static final int DEFAULT_COLS = 40;
+    private static final int DEFAULT_ROWS = 30;
 
     private int cols, rows;
 
     public Board()
     {
-        this(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        this(DEFAULT_COLS, DEFAULT_ROWS);
     }
 
-    public Board(int cols, int rows)
+    public Board(int rows, int cols)
     {
-        this.cols = cols;
         this.rows = rows;
+        this.cols = cols;
     }
 
     public boolean withinBounds(Point p)
@@ -36,13 +36,13 @@ public class Board extends Observable
         return true;
     }
     
-    public int getNumCols()
-    {
-        return cols;
-    }
-    
     public int getNumRows()
     {
         return rows;
+    }
+    
+    public int getNumCols()
+    {
+        return cols;
     }
 }
