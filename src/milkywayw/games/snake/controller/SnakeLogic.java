@@ -27,7 +27,7 @@ public class SnakeLogic
         if(food.getLocation().equals(target))
         {
             snake.grow();
-            generateFood(board, snake);
+            food = generateFood(board, snake);
         }
         else
         {
@@ -67,6 +67,17 @@ public class SnakeLogic
     
     public static Food generateFood(Board board, Snake snake)
     {   
+        return new Food(findEmptyPoint(board, snake));   
+    }
+    
+    public static void moveFood(Board board, Snake snake, Food food)
+    {
+        food.setLocation(findEmptyPoint(board, snake));
+    }
+    
+    // assumes food is currently not on the board
+    private static Point findEmptyPoint(Board board, Snake snake)
+    {
         ArrayList<Point> pool = new ArrayList<>(board.getNumCols() * board.getNumRows());
         
         for(int i = 0; i < board.getNumCols(); ++i)
@@ -82,6 +93,6 @@ public class SnakeLogic
             }
         }
         
-        return new Food(pool.get(rng.nextInt(pool.size())));   
+        return pool.get(rng.nextInt(pool.size()));
     }
 }
