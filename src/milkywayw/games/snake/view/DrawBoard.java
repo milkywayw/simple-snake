@@ -2,7 +2,9 @@ package milkywayw.games.snake.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.swing.JPanel;
@@ -12,8 +14,10 @@ import milkywayw.utilities.Point;
 @SuppressWarnings("serial")
 public class DrawBoard extends JPanel
 {
-    private ColorCell[][] grid;
+    private ArrayList<ColorCell> pixels;
     private int cols, rows;
+    
+    private final static Color DEFAULT_COLOR = Color.darkGray;
 
     public DrawBoard(int rows, int cols)
     {
@@ -21,29 +25,58 @@ public class DrawBoard extends JPanel
         this.cols = cols;
 
         setPreferredSize(new Dimension(cols * SnakeRender.CELL_SIZE, rows * SnakeRender.CELL_SIZE));
-        setLayout(new GridLayout(rows, cols));
-        initGrid(cols, rows);
+        setOpaque(true);
+        
+        pixels = new ArrayList<ColorCell>();
     }
-
-    private void initGrid(int cols, int rows)
+    
+    @Override
+    public void paintComponent(Graphics g)
     {
-        grid = new ColorCell[cols][rows];
-
-        for (int i = 0; i < rows; ++i)
-            for (int j = 0; j < cols; ++j)
-            {
-                grid[j][i] = new ColorCell();
-                add(grid[j][i]);
-            }
+        int cellHeight = getHeight() / rows;
+        int cellWidth = getWidth() / cols;
+        
+        g.setColor(Color.gray);
+        
+        g.fillRect(0, 0, getWidth(), getHeight());  // clear board
+        drawPixels(g, cellWidth, cellHeight);
+        drawGridLines(g, cellWidth, cellHeight);
+        
+        resetPixels();
     }
-
-    void colorBoard(Color color)
+    
+    private void drawPixels(Graphics g, int cellWidth, int cellHeight)
     {
-        for (int j = 0; j < cols; ++j)
-            for (int i = 0; i < rows; ++i)
-                grid[j][i].setColor(color);
+        for(ColorCell pixel : pixels)
+        {
+            g.setColor(pixel.getColor());
+            int col = pixel.getCoord().getX();
+            int row = rows - pixel.getCoord().getY() - 1;
+            
+            g.fillRect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
+        }
     }
 
+    private void drawGridLines(Graphics g, int cellWidth, int cellHeight)
+    {
+        g.setColor(Color.black);
+        
+        for(int row = 0; row < rows; ++row)
+        {
+            g.drawLine(0, row * cellHeight, getWidth(), row * cellHeight);
+        }
+        
+        for(int col = 0; col < cols; ++col)
+        {
+            g.drawLine(col * cellWidth, 0, col * cellWidth, getHeight());
+        }
+    }
+
+    private void resetPixels()
+    {
+        pixels.clear();
+    }
+    
     void colorPoints(Collection<Point> points, Color color)
     {
         for (Point p : points)
@@ -52,8 +85,6 @@ public class DrawBoard extends JPanel
 
     void colorPoint(Point point, Color color)
     {
-        // rows-y-1 is because grid has 0,0 as top left corner while
-        // point has 0,0 as bottom left corner.
-        grid[point.getX()][rows - point.getY() - 1].setColor(color);
+        pixels.add(new ColorCell(point, color));
     }
 }

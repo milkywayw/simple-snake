@@ -2,23 +2,27 @@ package milkywayw.games.snake.view;
 
 import java.awt.Color;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.RepaintManager;
+import milkywayw.utilities.Point;
 
 @SuppressWarnings("serial")
-public class ColorCell extends JLabel
+public class ColorCell
 {   
-    public ColorCell()
+    private Point coord;
+    private Color color;
+    
+    public ColorCell(Point coord, Color color)
     {
-        setBackground(Color.gray);
-        setBorder(BorderFactory.createLineBorder(Color.black));
-        setOpaque(true);
+        this.coord = coord;
+        this.color = color;
     }
     
-    public void setColor(Color color)
+    public Point getCoord()
     {
-        setBackground(color);
-        RepaintManager.currentManager(this).markCompletelyClean(this); 
+        return coord;
+    }
+    
+    public Color getColor()
+    {
+        return color;
     }
 }

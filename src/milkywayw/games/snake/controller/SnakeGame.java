@@ -15,8 +15,8 @@ public class SnakeGame
     // view
     private SnakeRender window;
     
-    private final static int DEFAULT_ROWS = 10;
-    private final static int DEFAULT_COLS = 10;
+    private final static int DEFAULT_ROWS = 20;
+    private final static int DEFAULT_COLS = 20;
     
     // milliseconds
     private final static int STEP_SIZE = 100;

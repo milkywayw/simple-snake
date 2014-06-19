@@ -60,8 +60,6 @@ public class SnakeRender extends JFrame
     
     public void update(Collection<Point> snake, Point food)
     {
-        // reset the board, then color in the snake and food
-        canvas.colorBoard(BOARD_COLOR);
         canvas.colorPoints(snake, SNAKE_COLOR);
         canvas.colorPoint(food, FOOD_COLOR);
         
