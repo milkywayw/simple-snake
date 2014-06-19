@@ -54,6 +54,6 @@ public class DrawBoard extends JPanel
     {
         // rows-y-1 is because grid has 0,0 as top left corner while
         // point has 0,0 as bottom left corner.
-        grid[point.getX()][rows-point.getY()-1].setColor(color);
+        grid[point.getX()][rows - point.getY() - 1].setColor(color);
     }
 }

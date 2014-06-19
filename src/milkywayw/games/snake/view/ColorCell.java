@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.RepaintManager;
 
 @SuppressWarnings("serial")
 public class ColorCell extends JLabel
@@ -18,5 +19,6 @@ public class ColorCell extends JLabel
     public void setColor(Color color)
     {
         setBackground(color);
+        RepaintManager.currentManager(this).markCompletelyClean(this); 
     }
 }

@@ -27,6 +27,18 @@ public class Snake
         {
             return delta;
         }
+        
+        public boolean isPerpendicular(Direction other)
+        {
+            // dot product
+            int i1 = delta.getX();
+            int i2 = delta.getY();
+            
+            int j1 = other.delta.getX();
+            int j2 = other.delta.getY();
+            
+            return i1 * j1 + i2 * j2 == 0;
+        }
     }
 
     public Snake(Point initialPoint, Direction dir)
@@ -45,7 +57,8 @@ public class Snake
 
     public void setDirection(Direction dir)
     {
-        currDir = dir;
+        if(dir.isPerpendicular(currDir))
+            currDir = dir;
     }
 
     public boolean containsPoint(Point point)

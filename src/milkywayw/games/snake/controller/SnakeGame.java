@@ -15,11 +15,11 @@ public class SnakeGame
     // view
     private SnakeRender window;
     
-    private final static int DEFAULT_ROWS = 20;
-    private final static int DEFAULT_COLS = 30;
+    private final static int DEFAULT_ROWS = 10;
+    private final static int DEFAULT_COLS = 10;
     
     // milliseconds
-    private final static int STEP_SIZE = 300;
+    private final static int STEP_SIZE = 100;
     
     
     public SnakeGame()
@@ -43,7 +43,7 @@ public class SnakeGame
         food = SnakeLogic.generateFood(board, snake);
         
         // view
-        window = new SnakeRender(rows, cols);
+        window = new SnakeRender(rows, cols, snake.getDirection());
         
         // controller
         /* controller class initialization? */
@@ -65,7 +65,7 @@ public class SnakeGame
             lastTime = thisTime;
             
             // INPUT
-            // TODO: update snake's direction if key is pressed
+            snake.setDirection(window.getLastDirection());
             // PROCESS
             alive = SnakeLogic.update(snake,food,board);
             // RENDER
