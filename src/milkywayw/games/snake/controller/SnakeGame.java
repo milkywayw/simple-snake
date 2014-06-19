@@ -54,7 +54,6 @@ public class SnakeGame
     {
         boolean alive = true;
         double lastTime = System.currentTimeMillis();
-        snake.grow();snake.grow();snake.grow();
         
         while(alive)
         {

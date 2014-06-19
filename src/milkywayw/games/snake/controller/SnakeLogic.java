@@ -27,7 +27,7 @@ public class SnakeLogic
         if(food.getLocation().equals(target))
         {
             snake.grow();
-            food = generateFood(board, snake);
+            moveFood(board, snake, food);
         }
         else
         {
