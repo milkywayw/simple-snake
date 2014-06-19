@@ -56,7 +56,6 @@ public class SnakeGame
             // TODO: update snake's direction if key is pressed
             // PROCESS
             alive = SnakeLogic.update(snake,food,board);
-            alive = alive && true;
             // RENDER
             window.update(snake.getPoints(),food.getLocation());   
         }
