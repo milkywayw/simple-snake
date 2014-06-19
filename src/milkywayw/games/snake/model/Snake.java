@@ -2,7 +2,6 @@ package milkywayw.games.snake.model;
 
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Observable;
 
 import milkywayw.utilities.Point;
 

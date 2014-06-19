@@ -49,7 +49,5 @@ public class SnakeRender extends JFrame
         canvas.colorBoard(BOARD_COLOR);
         canvas.colorPoints(snake, SNAKE_COLOR);
         canvas.colorPoint(food, FOOD_COLOR);
-        
-        repaint();
     }
 }
