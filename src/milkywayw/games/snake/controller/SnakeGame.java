@@ -18,6 +18,9 @@ public class SnakeGame
     private final static int DEFAULT_ROWS = 20;
     private final static int DEFAULT_COLS = 30;
     
+    // milliseconds
+    private final static int STEP_SIZE = 300;
+    
     
     public SnakeGame()
     {
@@ -50,8 +53,18 @@ public class SnakeGame
     private void runGame()
     {
         boolean alive = true;
+        double lastTime = System.currentTimeMillis();
+        snake.grow();snake.grow();snake.grow();
+        
         while(alive)
         {
+            double thisTime = System.currentTimeMillis();
+            
+            if((thisTime - lastTime) < STEP_SIZE)
+                continue;
+
+            lastTime = thisTime;
+            
             // INPUT
             // TODO: update snake's direction if key is pressed
             // PROCESS
