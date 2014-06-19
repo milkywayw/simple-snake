@@ -15,6 +15,9 @@ public class SnakeGame
     // view
     private SnakeRender window;
     
+    // controller
+    private InputGrabber input;
+    
     private final static int DEFAULT_ROWS = 20;
     private final static int DEFAULT_COLS = 20;
     
@@ -30,9 +33,15 @@ public class SnakeGame
     //possibility for command line args
     public SnakeGame(int cols, int rows)
     {
+        // view
+        window = new SnakeRender(rows, cols);
+
+        // controller (?)
+        // TODO: make an interface for drawboard, then use that interface
+        input = new InputGrabber(window.getCanvas());
+        
         initializeGame(cols, rows);
         runGame();
-        // reset game or something here
     }
     
     private void initializeGame(int cols, int rows)
@@ -41,12 +50,6 @@ public class SnakeGame
         board = new Board(rows, cols);
         snake = SnakeLogic.generateSnake(board);
         food = SnakeLogic.generateFood(board, snake);
-        
-        // view
-        window = new SnakeRender(rows, cols, snake.getDirection());
-        
-        // controller
-        /* controller class initialization? */
     }
     
     // main loop goes here
@@ -54,7 +57,7 @@ public class SnakeGame
     {
         boolean alive = true;
         double lastTime = System.currentTimeMillis();
-        
+
         while(alive)
         {
             double thisTime = System.currentTimeMillis();
@@ -65,11 +68,11 @@ public class SnakeGame
             lastTime = thisTime;
             
             // INPUT
-            snake.setDirection(window.getLastDirection());
+            snake.setDirection(input.getLastDirection());
             // PROCESS
             alive = SnakeLogic.update(snake,food,board);
             // RENDER
-            window.update(snake.getPoints(),food.getLocation());   
+            window.update(snake.getPoints(),food.getLocation());
         }
     }
     

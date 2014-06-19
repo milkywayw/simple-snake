@@ -3,7 +3,6 @@ package milkywayw.games.snake.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -17,7 +16,7 @@ public class DrawBoard extends JPanel
     private ArrayList<ColorCell> pixels;
     private int cols, rows;
     
-    private final static Color DEFAULT_COLOR = Color.darkGray;
+    private final static Color DEFAULT_COLOR = Color.gray;
 
     public DrawBoard(int rows, int cols)
     {
@@ -36,7 +35,7 @@ public class DrawBoard extends JPanel
         int cellHeight = getHeight() / rows;
         int cellWidth = getWidth() / cols;
         
-        g.setColor(Color.gray);
+        g.setColor(DEFAULT_COLOR);
         
         g.fillRect(0, 0, getWidth(), getHeight());  // clear board
         drawPixels(g, cellWidth, cellHeight);

@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import milkywayw.utilities.Point;
 
-@SuppressWarnings("serial")
 public class ColorCell
 {   
     private Point coord;

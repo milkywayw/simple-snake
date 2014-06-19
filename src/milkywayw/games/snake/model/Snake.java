@@ -57,6 +57,9 @@ public class Snake
 
     public void setDirection(Direction dir)
     {
+        if(dir == null)
+            return;
+                    
         if(dir.isPerpendicular(currDir))
             currDir = dir;
     }
