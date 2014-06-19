@@ -41,8 +41,6 @@ public class DrawBoard extends JPanel
         g.fillRect(0, 0, getWidth(), getHeight());  // clear board
         drawPixels(g, cellWidth, cellHeight);
         drawGridLines(g, cellWidth, cellHeight);
-        
-        resetPixels();
     }
     
     private void drawPixels(Graphics g, int cellWidth, int cellHeight)
@@ -72,7 +70,7 @@ public class DrawBoard extends JPanel
         }
     }
 
-    private void resetPixels()
+    public void reset()
     {
         pixels.clear();
     }
