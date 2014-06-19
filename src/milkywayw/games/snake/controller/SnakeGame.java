@@ -15,24 +15,24 @@ public class SnakeGame
     // view
     private SnakeRender window;
     
-    private final static int DEFAULT_ROWS = 30;
-    private final static int DEFAULT_COLS = 40;
+    private final static int DEFAULT_ROWS = 20;
+    private final static int DEFAULT_COLS = 30;
     
     
     public SnakeGame()
     {
-        this(DEFAULT_ROWS, DEFAULT_COLS);
+        this(DEFAULT_COLS, DEFAULT_ROWS);
     }
     
     //possibility for command line args
-    public SnakeGame(int rows, int cols)
+    public SnakeGame(int cols, int rows)
     {
         initializeGame(rows, cols);
         runGame();
         // reset game or something here
     }
     
-    private void initializeGame(int rows, int cols)
+    private void initializeGame(int cols, int rows)
     {
         // model
         board = new Board(rows, cols);
