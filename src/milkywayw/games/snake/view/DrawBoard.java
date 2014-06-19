@@ -21,20 +21,20 @@ public class DrawBoard extends JPanel
         this.cols = cols;
 
         setPreferredSize(new Dimension(cols * SnakeRender.CELL_SIZE, rows * SnakeRender.CELL_SIZE));
-        setLayout(new GridLayout(rows, cols));
+        setLayout(new GridLayout(cols, rows));
 
-        initGrid(rows, cols);
+        initGrid(cols, rows);
     }
 
-    private void initGrid(int rows, int cols)
+    private void initGrid(int cols, int rows)
     {
-        grid = new ColorCell[rows][cols];
+        grid = new ColorCell[cols][rows];
 
         for (int i = 0; i < rows; ++i)
             for (int j = 0; j < cols; ++j)
             {
-                grid[i][j] = new ColorCell();
-                add(grid[i][j]);
+                grid[j][i] = new ColorCell();
+                add(grid[j][i]);
             }
     }
 
@@ -42,7 +42,7 @@ public class DrawBoard extends JPanel
     {
         for (int i = 0; i < rows; ++i)
             for (int j = 0; j < cols; ++j)
-                grid[i][j].setColor(color);
+                grid[j][i].setColor(color);
     }
 
     void colorPoints(Collection<Point> points, Color color)

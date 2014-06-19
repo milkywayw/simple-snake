@@ -7,7 +7,7 @@ import java.util.Observable;
 import milkywayw.utilities.Point;
 
 
-public class Snake extends Observable
+public class Snake
 {
     private LinkedList<Point> snake;
     private HashSet<Point> points;
@@ -61,21 +61,19 @@ public class Snake extends Observable
     
     public void move()
     {
-        removeTail();
         grow();
+        removeTail();
     }
 
     public void grow()
     {
         Point target = nextPoint();
         addHead(target);
-        
-        notifyObservers(points.clone());
     }
     
     public Point nextPoint()
     {
-        Point head = snake.getFirst();
+        Point head = snake.peekFirst();
         Point delta = currDir.getDelta();
 
         return new Point(head.getX() + delta.getX(), head.getY() + delta.getY());

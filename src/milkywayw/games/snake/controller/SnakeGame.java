@@ -49,12 +49,17 @@ public class SnakeGame
     // main loop goes here
     private void runGame()
     {
-        // INPUT
-        // TODO: update snake's direction if key is pressed
-        // PROCESS
-        SnakeLogic.update(snake,food,board);
-        // RENDER
-        window.update(snake.getPoints(),food.getLocation());
+        boolean alive = true;
+        while(alive)
+        {
+            // INPUT
+            // TODO: update snake's direction if key is pressed
+            // PROCESS
+            alive = SnakeLogic.update(snake,food,board);
+            alive = alive && true;
+            // RENDER
+            window.update(snake.getPoints(),food.getLocation());   
+        }
     }
     
     public static void main(String[] args)
