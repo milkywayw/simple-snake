@@ -30,7 +30,7 @@ public class SnakeGame
     //possibility for command line args
     public SnakeGame(int cols, int rows)
     {
-        initializeGame(rows, cols);
+        initializeGame(cols, rows);
         runGame();
         // reset game or something here
     }

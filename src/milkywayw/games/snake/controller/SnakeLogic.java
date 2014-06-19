@@ -45,6 +45,8 @@ public class SnakeLogic
         
         int x = rng.nextInt(board.getNumCols());
         int y = rng.nextInt(board.getNumRows());
+        x = 10;
+        y = 0;
         p = new Point(x,y);
         
         // point to furthest wall
@@ -61,7 +63,7 @@ public class SnakeLogic
                 dir = (board.getNumRows() - y > y) ? Direction.DOWN : Direction.UP;
             }
         }        
-       
+        dir = Direction.UP;
         return new Snake(p, dir);
     }
     
