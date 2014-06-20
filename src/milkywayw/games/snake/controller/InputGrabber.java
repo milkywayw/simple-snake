@@ -1,6 +1,8 @@
 package milkywayw.games.snake.controller;
 
 import java.awt.event.ActionEvent;
+import java.util.Deque;
+import java.util.LinkedList;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -12,18 +14,24 @@ import milkywayw.games.snake.view.DrawBoard;
 @SuppressWarnings("serial")
 public class InputGrabber
 {
-    private Direction lastPressed;
+	private static final int BUFFER_SIZE = 2;
+
+	private Deque<Direction> inputBuffer;
     
     private boolean resetFlag = false;
     
     public InputGrabber(DrawBoard canvas)
     {
+    	inputBuffer = new LinkedList<>();
         wireControllerToView(canvas);
     }
     
     public void setDirection(Direction dir)
     {
-        lastPressed = dir;
+    	inputBuffer.addFirst(dir);
+    	
+        if(inputBuffer.size() > BUFFER_SIZE)
+        	inputBuffer.removeLast();
     }
     
     public boolean resetFlagIsSet()
@@ -38,7 +46,7 @@ public class InputGrabber
     
     public Direction getLastDirection()
     {
-        return lastPressed;
+        return (inputBuffer.isEmpty()) ? null : inputBuffer.removeLast();
     }
     
     private void wireControllerToView(DrawBoard canvas)

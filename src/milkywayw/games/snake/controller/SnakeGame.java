@@ -18,11 +18,11 @@ public class SnakeGame
     // controller
     private InputGrabber input;
     
-    private final static int DEFAULT_ROWS = 20;
-    private final static int DEFAULT_COLS = 20;
+    private final static int DEFAULT_ROWS = 30;
+    private final static int DEFAULT_COLS = 40;
     
-    // milliseconds
-    private final static int STEP_SIZE = 100;
+    // milliseconds - 60 FPS
+    private final static double STEP_SIZE = 100;
     
     
     public SnakeGame()
@@ -61,14 +61,15 @@ public class SnakeGame
         while(alive)
         {
             double thisTime = System.currentTimeMillis();
+           
             
             if((thisTime - lastTime) < STEP_SIZE)
                 continue;
-
-            lastTime = thisTime;
-            
+            else 
+            	lastTime = thisTime;
+           
             // INPUT
-            snake.setDirection(input.getLastDirection());
+            snake.setDirection(input.getLastDirection());          
             // PROCESS
             alive = SnakeLogic.update(snake,food,board);
             // RENDER
