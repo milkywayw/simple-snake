@@ -8,7 +8,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.KeyStroke;
 
-import milkywayw.games.snake.model.Snake.Direction;
+import milkywayw.games.snake.model.Direction;
 import milkywayw.games.snake.view.DrawBoard;
 
 @SuppressWarnings("serial")
