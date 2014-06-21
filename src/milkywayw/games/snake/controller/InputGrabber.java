@@ -8,7 +8,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.KeyStroke;
 
-import milkywayw.games.snake.view.DrawBoard;
+import milkywayw.games.snake.view.PixelBoard;
 import milkywayw.utilities.Direction;
 
 @SuppressWarnings("serial")
@@ -20,7 +20,7 @@ public class InputGrabber
     
     private boolean resetFlag = false;
     
-    public InputGrabber(DrawBoard canvas)
+    public InputGrabber(PixelBoard canvas)
     {
     	inputBuffer = new LinkedList<>();
         wireControllerToView(canvas);
@@ -49,7 +49,7 @@ public class InputGrabber
         return (inputBuffer.isEmpty()) ? null : inputBuffer.removeLast();
     }
     
-    private void wireControllerToView(DrawBoard canvas)
+    private void wireControllerToView(PixelBoard canvas)
     {
 
         Action setLeft = new AbstractAction()

@@ -4,12 +4,12 @@ import java.awt.Color;
 
 import milkywayw.utilities.Point;
 
-public class ColorCell
+public class Pixel
 {   
     private Point coord;
     private Color color;
     
-    public ColorCell(Point coord, Color color)
+    public Pixel(Point coord, Color color)
     {
         this.coord = coord;
         this.color = color;

@@ -11,22 +11,23 @@ import javax.swing.JPanel;
 import milkywayw.utilities.Point;
 
 @SuppressWarnings("serial")
-public class DrawBoard extends JPanel
+public class PixelBoard extends JPanel
 {
-    private ArrayList<ColorCell> pixels;
+    private ArrayList<Pixel> pixels;
     private int cols, rows;
-    
-    private final static Color DEFAULT_COLOR = Color.gray;
+    private Color defaultColor;
 
-    public DrawBoard(int rows, int cols)
+    public PixelBoard(Color color, int rows, int cols)
     {
         this.rows = rows;
         this.cols = cols;
+        
+        defaultColor = color;
 
         setPreferredSize(new Dimension(cols * SnakeRender.CELL_SIZE, rows * SnakeRender.CELL_SIZE));
         setOpaque(true);
         
-        pixels = new ArrayList<ColorCell>();
+        pixels = new ArrayList<Pixel>();
     }
     
     @Override
@@ -35,16 +36,17 @@ public class DrawBoard extends JPanel
         int cellHeight = getHeight() / rows;
         int cellWidth = getWidth() / cols;
         
-        g.setColor(DEFAULT_COLOR);
+        g.setColor(defaultColor);
         
         g.fillRect(0, 0, getWidth(), getHeight());  // clear board
+        
         drawPixels(g, cellWidth, cellHeight);
         drawGridLines(g, cellWidth, cellHeight);
     }
     
     private void drawPixels(Graphics g, int cellWidth, int cellHeight)
     {
-        for(ColorCell pixel : pixels)
+        for(Pixel pixel : pixels)
         {
             g.setColor(pixel.getColor());
             int col = pixel.getCoord().getX();
@@ -59,14 +61,10 @@ public class DrawBoard extends JPanel
         g.setColor(Color.black);
         
         for(int row = 0; row < rows; ++row)
-        {
             g.drawLine(0, row * cellHeight, getWidth(), row * cellHeight);
-        }
         
         for(int col = 0; col < cols; ++col)
-        {
             g.drawLine(col * cellWidth, 0, col * cellWidth, getHeight());
-        }
     }
 
     public void reset()
@@ -82,6 +80,6 @@ public class DrawBoard extends JPanel
 
     void colorPoint(Point point, Color color)
     {
-        pixels.add(new ColorCell(point, color));
+        pixels.add(new Pixel(point, color));
     }
 }

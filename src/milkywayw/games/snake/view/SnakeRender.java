@@ -11,21 +11,19 @@ import milkywayw.utilities.Point;
 @SuppressWarnings("serial")
 public class SnakeRender extends JFrame
 {
-    private DrawBoard canvas;
+    private PixelBoard canvas;
     
     static final int CELL_SIZE = 20;
 
+    private static final Color BOARD_COLOR = Color.gray;
     private static final Color SNAKE_COLOR = Color.green;
     private static final Color FOOD_COLOR = Color.cyan;
     
     public SnakeRender(int rows, int cols)
     {   
         initFrame();
-        
-        canvas = new DrawBoard(rows, cols); 
-        
+        canvas = new PixelBoard(BOARD_COLOR, rows, cols);
         add(canvas);
-        
         finalizeFrame();
     }
     
@@ -52,7 +50,7 @@ public class SnakeRender extends JFrame
         repaint();
     }
     
-    public DrawBoard getCanvas()
+    public PixelBoard getCanvas()
     {
         return canvas;
     }
