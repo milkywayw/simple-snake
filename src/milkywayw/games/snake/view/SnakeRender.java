@@ -13,8 +13,6 @@ public class SnakeRender extends JFrame
 {
     private PixelBoard canvas;
 
-    static final int CELL_SIZE = 20;
-
     private static final Color BOARD_COLOR = Color.gray;
     private static final Color SNAKE_COLOR = Color.green;
     private static final Color FOOD_COLOR = Color.cyan;

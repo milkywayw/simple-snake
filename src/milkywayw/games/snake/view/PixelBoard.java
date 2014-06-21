@@ -17,18 +17,26 @@ public class PixelBoard extends JPanel
     private int cols, rows;
     private Color defaultColor;
 
-    public PixelBoard(Color color, int rows, int cols)
+    // should 
+    private static final int DEFAULT_CELL_SIZE = 20;
+    
+    public PixelBoard(Color color, int rows, int cols, int cellSize)
     {
         this.rows = rows;
         this.cols = cols;
 
         defaultColor = color;
 
-        setPreferredSize(new Dimension(cols * SnakeRender.CELL_SIZE, rows * SnakeRender.CELL_SIZE));
+        setPreferredSize(new Dimension(cols * cellSize, rows * cellSize));
         setOpaque(true);
         setBackground(Color.black);
 
         pixels = new ArrayList<Pixel>();
+    }
+    
+    public PixelBoard(Color color, int rows, int cols)
+    {
+        this(color, rows, cols, DEFAULT_CELL_SIZE);
     }
 
     @Override
