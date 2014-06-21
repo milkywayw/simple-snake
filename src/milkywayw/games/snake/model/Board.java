@@ -33,12 +33,12 @@ public class Board
 
         return true;
     }
-    
+
     public int getNumRows()
     {
         return rows;
     }
-    
+
     public int getNumCols()
     {
         return cols;

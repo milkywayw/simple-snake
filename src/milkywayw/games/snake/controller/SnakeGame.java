@@ -6,31 +6,30 @@ import milkywayw.games.snake.model.Snake;
 import milkywayw.games.snake.view.SnakeRender;
 
 public class SnakeGame
-{   
+{
     // models
     private Snake snake;
     private Board board;
     private Food food;
-    
+
     // view
     private SnakeRender window;
-    
+
     // controller
     private InputGrabber input;
-    
+
     private final static int DEFAULT_ROWS = 30;
     private final static int DEFAULT_COLS = 40;
-    
+
     // milliseconds - 60 FPS
     private final static double STEP_SIZE = 100;
-    
-    
+
     public SnakeGame()
     {
         this(DEFAULT_COLS, DEFAULT_ROWS);
     }
-    
-    //possibility for command line args
+
+    // possibility for command line args
     public SnakeGame(int cols, int rows)
     {
         // view
@@ -39,11 +38,11 @@ public class SnakeGame
         // controller (?)
         // TODO: make an interface for drawboard, then use that interface
         input = new InputGrabber(window.getCanvas());
-        
+
         initializeGame(cols, rows);
         runGame();
     }
-    
+
     private void initializeGame(int cols, int rows)
     {
         // model
@@ -51,32 +50,31 @@ public class SnakeGame
         snake = SnakeLogic.generateSnake(board);
         food = SnakeLogic.generateFood(board, snake);
     }
-    
+
     // main loop goes here
     private void runGame()
     {
         boolean alive = true;
         double lastTime = System.currentTimeMillis();
 
-        while(alive)
+        while (alive)
         {
             double thisTime = System.currentTimeMillis();
-           
-            
-            if((thisTime - lastTime) < STEP_SIZE)
+
+            if ((thisTime - lastTime) < STEP_SIZE)
                 continue;
-            else 
-            	lastTime = thisTime;
-           
+            else
+                lastTime = thisTime;
+
             // INPUT
-            snake.setDirection(input.getLastDirection());          
+            snake.setDirection(input.getLastDirection());
             // PROCESS
-            alive = SnakeLogic.update(snake,food,board);
+            alive = SnakeLogic.update(snake, food, board);
             // RENDER
-            window.update(snake.getPoints(),food.getLocation());
+            window.update(snake.getPoints(), food.getLocation());
         }
     }
-    
+
     public static void main(String[] args)
     {
         new SnakeGame();

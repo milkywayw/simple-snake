@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import milkywayw.utilities.Direction;
 import milkywayw.utilities.Point;
 
-
 public class Snake
 {
     private LinkedList<Point> snake;
@@ -29,10 +28,10 @@ public class Snake
 
     public void setDirection(Direction dir)
     {
-        if(dir == null)
+        if (dir == null)
             return;
-                    
-        if(dir.isPerpendicular(currDir))
+
+        if (dir.isPerpendicular(currDir))
             currDir = dir;
     }
 
@@ -40,12 +39,12 @@ public class Snake
     {
         return points.contains(point);
     }
-    
+
     public Point getHead()
     {
         return snake.getFirst();
     }
-    
+
     public void translate()
     {
         extend();
@@ -57,7 +56,7 @@ public class Snake
         Point target = nextPoint();
         addHead(target);
     }
-    
+
     public Point nextPoint()
     {
         Point head = snake.peekFirst();
@@ -76,7 +75,7 @@ public class Snake
     {
         points.remove(snake.removeLast());
     }
-    
+
     public HashSet<Point> getPoints()
     {
         return new HashSet<Point>(points);
