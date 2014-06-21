@@ -3,6 +3,7 @@ package milkywayw.games.snake.model;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+import milkywayw.utilities.Direction;
 import milkywayw.utilities.Point;
 
 
@@ -45,13 +46,13 @@ public class Snake
         return snake.getFirst();
     }
     
-    public void move()
+    public void translate()
     {
-        grow();
+        extend();
         removeTail();
     }
 
-    public void grow()
+    public void extend()
     {
         Point target = nextPoint();
         addHead(target);

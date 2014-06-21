@@ -1,6 +1,5 @@
-package milkywayw.games.snake.model;
+package milkywayw.utilities;
 
-import milkywayw.utilities.Point;
 
 public enum Direction
 {

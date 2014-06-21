@@ -1,10 +1,8 @@
 package milkywayw.games.snake.model;
 
-import java.util.Observable;
-
 import milkywayw.utilities.Point;
 
-public class Food extends Observable
+public class Food
 {
     private Point location;
     

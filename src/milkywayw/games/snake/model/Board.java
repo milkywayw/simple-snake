@@ -1,10 +1,8 @@
 package milkywayw.games.snake.model;
 
-import java.util.Observable;
-
 import milkywayw.utilities.Point;
 
-public class Board extends Observable
+public class Board
 {
     private static final int DEFAULT_COLS = 40;
     private static final int DEFAULT_ROWS = 30;

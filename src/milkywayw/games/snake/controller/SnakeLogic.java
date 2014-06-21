@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import milkywayw.games.snake.model.Board;
-import milkywayw.games.snake.model.Direction;
 import milkywayw.games.snake.model.Food;
 import milkywayw.games.snake.model.Snake;
+import milkywayw.utilities.Direction;
 import milkywayw.utilities.Point;
 
 
@@ -26,12 +26,12 @@ public class SnakeLogic
  
         if(food.getLocation().equals(target))
         {
-            snake.grow();
+            snake.extend();
             moveFood(board, snake, food);
         }
         else
         {
-            snake.move();
+            snake.translate();
         }    
     
         return true;
